@@ -89,3 +89,7 @@ C:\Users\Adam\Documents\GitHub\BugTracker\BugTracker\BugTracker\obj\Debug\BugTra
 C:\Users\Adam\Documents\GitHub\BugTracker\BugTracker\BugTracker\obj\Debug\BugTracker.csproj.CopyComplete
 C:\Users\Adam\Documents\GitHub\BugTracker\BugTracker\BugTracker\obj\Debug\BugTracker.dll
 C:\Users\Adam\Documents\GitHub\BugTracker\BugTracker\BugTracker\obj\Debug\BugTracker.pdb
+C:\Users\Adam\Documents\GitHub\BugTracker\BugTracker\BugTracker\bin\EntityFramework.dll
+C:\Users\Adam\Documents\GitHub\BugTracker\BugTracker\BugTracker\bin\EntityFramework.SqlServer.dll
+C:\Users\Adam\Documents\GitHub\BugTracker\BugTracker\BugTracker\bin\EntityFramework.xml
+C:\Users\Adam\Documents\GitHub\BugTracker\BugTracker\BugTracker\bin\EntityFramework.SqlServer.xml
