@@ -9,12 +9,6 @@ namespace BugTracker.Models
     [Table("Principal")]
     public partial class Principal
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Principal()
-        {
-            BugLogs = new HashSet<BugLog>();
-        }
-
         [Key]
         public int UserID { get; set; }
 
@@ -47,9 +41,6 @@ namespace BugTracker.Models
 
         [StringLength(50)]
         public string JobDescription { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BugLog> BugLogs { get; set; }
 
         public virtual Department Department { get; set; }
     }

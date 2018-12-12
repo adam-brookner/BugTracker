@@ -9,12 +9,6 @@ namespace BugTracker.Models
     [Table("Priority")]
     public partial class Priority
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Priority()
-        {
-            BugLogs = new HashSet<BugLog>();
-        }
-
         public int PriorityID { get; set; }
 
         [Required]
@@ -23,8 +17,5 @@ namespace BugTracker.Models
 
         [Required]
         public string Description { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BugLog> BugLogs { get; set; }
     }
 }

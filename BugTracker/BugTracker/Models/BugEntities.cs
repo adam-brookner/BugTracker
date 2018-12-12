@@ -16,6 +16,7 @@ namespace BugTracker.Models
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Principal> Principals { get; set; }
         public virtual DbSet<Priority> Priorities { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,16 +32,6 @@ namespace BugTracker.Models
             modelBuilder.Entity<Principal>()
                 .Property(e => e.PostCode)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Principal>()
-                .HasMany(e => e.BugLogs)
-                .WithRequired(e => e.Principal)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Priority>()
-                .HasMany(e => e.BugLogs)
-                .WithRequired(e => e.Priority)
-                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -33,7 +33,11 @@ namespace BugTracker.Models
             bugDB.Priorities.Add(priority);
             bugDB.SaveChanges();
         }
-
+        void IBugRepository.AddStatus(Status status)
+        {
+            bugDB.Status.Add(status);
+            bugDB.SaveChanges();
+        }
         //Delete
         void IBugRepository.DeleteBug(BugLog bug)
         {
@@ -58,6 +62,11 @@ namespace BugTracker.Models
             bugDB.Priorities.Remove(priority);
             bugDB.SaveChanges();
         }
+        void IBugRepository.DeleteStatus(Status status)
+        {
+            bugDB.Status.Remove(status);
+            bugDB.SaveChanges();
+        }
 
         //Get all
         IEnumerable<BugLog> IBugRepository.GetAllBugs()
@@ -78,6 +87,10 @@ namespace BugTracker.Models
         IEnumerable<Priority> IBugRepository.GetAllPriorities()
         {
             return bugDB.Priorities.ToList();
+        }
+        IEnumerable<Status> IBugRepository.GetAllStatuses()
+        {
+            return bugDB.Status.ToList();
         }
 
         //Get By ID
@@ -100,6 +113,10 @@ namespace BugTracker.Models
         {
             return bugDB.Priorities.Single(pr => pr.PriorityID == PriorityID);
         }
+        Status IBugRepository.GetStatusByID(int StatusID)
+        {
+            return bugDB.Status.Single(s => s.StatusID == StatusID);
+        }
 
         //Update / Edit
         void IBugRepository.UpdateBug(BugLog bug)
@@ -111,6 +128,7 @@ namespace BugTracker.Models
             tmpBug.Created = bug.Created;
             tmpBug.UserID = bug.UserID;
             tmpBug.PriorityID = bug.PriorityID;
+            tmpBug.StatusID = bug.StatusID;
 
             bugDB.SaveChanges();
         }
@@ -144,6 +162,13 @@ namespace BugTracker.Models
             Priority tmpPriority = bugDB.Priorities.Single(pr => pr.PriorityID == priority.PriorityID);
             tmpPriority.PriorityName = priority.PriorityName;
             tmpPriority.Description = priority.Description;
+
+            bugDB.SaveChanges();
+        }
+        void IBugRepository.UpdateStatus(Status status)
+        {
+            Status tmpStatus = bugDB.Status.Single(s => s.StatusID == status.StatusID);
+            tmpStatus.Title = status.Title;
 
             bugDB.SaveChanges();
         }
