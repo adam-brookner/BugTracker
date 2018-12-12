@@ -145,6 +145,7 @@ namespace BugTracker.Models
             tmpPriority.PriorityName = priority.PriorityName;
             tmpPriority.Description = priority.Description;
 
+            bugDB.SaveChanges();
         }
     }
 }
