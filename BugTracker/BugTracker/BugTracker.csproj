@@ -157,6 +157,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BugLogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PrincipalsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -214,9 +215,15 @@
     <Content Include="Views\BugLogs\Details.cshtml" />
     <Content Include="Views\BugLogs\Edit.cshtml" />
     <Content Include="Views\BugLogs\Index.cshtml" />
+    <Content Include="Views\Principals\Create.cshtml" />
+    <Content Include="Views\Principals\Delete.cshtml" />
+    <Content Include="Views\Principals\Details.cshtml" />
+    <Content Include="Views\Principals\Edit.cshtml" />
+    <Content Include="Views\Principals\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

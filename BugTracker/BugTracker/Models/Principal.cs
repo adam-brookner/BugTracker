@@ -26,7 +26,7 @@ namespace BugTracker.Models
 
         [Column("Phone Number")]
         [Required]
-        [StringLength(11)]
+        [RegularExpression(@"^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$", ErrorMessage = "Not a valid phone number")]
         public string Phone_Number { get; set; }
 
         [Required]

@@ -26,6 +26,8 @@ namespace BugTracker.Models
         public int PriorityID { get; set; }
 
         public int? StatusID { get; set; }
+       
+        public virtual Principal Principal { get; set; }
 
         public virtual Status Status { get; set; }
     }

@@ -1,19 +1,26 @@
 ﻿@model IEnumerable<BugTracker.Models.BugLog>
 
 @{
-    ViewBag.Title = "Bug Log";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Bugs</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm())
+{
+    <p>
+        Find by name: @Html.TextBox("searchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Status.Title)
+            Status
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Title)
@@ -25,7 +32,7 @@
             @Html.DisplayNameFor(model => model.Created)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UserID)
+            Primary Resource
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PriorityID)
@@ -35,6 +42,7 @@
 
 @foreach (var item in Model) {
     <tr>
+
         <td>
             @Html.DisplayFor(modelItem => item.Status.Title)
         </td>
@@ -48,15 +56,15 @@
             @Html.DisplayFor(modelItem => item.Created)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UserID)
+            @Html.DisplayFor(modelItem => item.Principal.Forename)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PriorityID)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BugID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BugID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BugID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.BugID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BugID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BugID })
         </td>
     </tr>
 }

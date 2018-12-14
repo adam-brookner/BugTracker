@@ -10,109 +10,109 @@ using BugTracker.Models;
 
 namespace BugTracker.Controllers
 {
-    public class BugLogsController : Controller
+    public class PrincipalsController : Controller
     {
+        private BugEntities db = new BugEntities();
         private IBugRepository bugRepository = null;
-        private BugEntities be = new BugEntities();
-        public BugLogsController()
-            :this(new BugRepository())
-        { }
+        public PrincipalsController()
+        :this(new BugRepository())
+        {
 
-        public BugLogsController(BugRepository bugRepository)
+        }
+        public PrincipalsController(BugRepository bugRepository)
         {
             this.bugRepository = bugRepository;
         }
-
-        // GET: BugLogs
+        // GET: Principals
         public ActionResult Index(string searchString)
         {
-            var bugs = from b in be.BugLogs select b;
+            var principals = from p in db.Principals select p;
             if (!String.IsNullOrEmpty(searchString))
             {
-                bugs = bugs.Where(b => b.Title.Contains(searchString) || b.Principal.Forename.Contains(searchString));
+                principals = principals.Where(p => p.Forename.Contains(searchString) || p.Surname.Contains(searchString));
             }
-            return View(bugs.ToList());
+            return View(principals.ToList());
         }
 
-        // GET: BugLogs/Details/5
+        // GET: Principals/Details/5
         public ActionResult Details(int id)
         {
-            BugLog bug = bugRepository.GetBugByID(id);
-            ViewBag.Bugs = bugRepository.GetBugByID(id);
-            ViewBag.Message = "Bug Detail";
-            return View(bug);
+            Principal principal = bugRepository.GetPrincipalByID(id);
+            ViewBag.Principals = bugRepository.GetPrincipalByID(id);
+            ViewBag.Message = "Principal Detail";
+            return View(principal);
         }
 
-        // GET: BugLogs/Create
+        // GET: Principals/Create
         public ActionResult Create()
         {
-            BugLog bug = new BugLog();
-            return View(bug);
+            Principal principal = new Principal();
+            return View(principal);
         }
 
-        // POST: BugLogs/Create
+        // POST: Principals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Create(BugLog bug)
+        public ActionResult Create(Principal principal)
         {
             try
             {
                 // TODO: Add insert logic here
-                bugRepository.AddBug(bug);
+                bugRepository.AddPrincipal(principal);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View(bug);
+                return View(principal);
             }
         }
 
-        // GET: BugLogs/Edit/5
+        // GET: Principals/Edit/5
         public ActionResult Edit(int id)
         {
-            BugLog bug = bugRepository.GetBugByID(id);
-            return View(bug);
+            Principal principal = bugRepository.GetPrincipalByID(id);
+            return View(principal);
         }
 
-        // POST: BugLogs/Edit/5
+        // POST: Principals/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public ActionResult Edit(BugLog bug)
+        public ActionResult Edit(Principal principal)
         {
             try
             {
                 // TODO: Add update logic here
-                bugRepository.UpdateBug(bug);
+                bugRepository.UpdatePrincipal(principal);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View(bug);
+                return View(principal);
             }
         }
 
-        // GET: BugLogs/Delete/5
+        // GET: Principals/Delete/5
         public ActionResult Delete(int id)
         {
-            BugLog bug = bugRepository.GetBugByID(id);
-            return View(bug);
+            Principal principal = bugRepository.GetPrincipalByID(id);
+            return View(principal);
         }
 
-        // POST: BugLogs/Delete/5
+        // POST: Principals/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            BugLog bug = bugRepository.GetBugByID(id);
-           try
+            Principal principal = bugRepository.GetPrincipalByID(id);
+            try
             {
-                bugRepository.DeleteBug(bug);
+                bugRepository.DeletePrincipal(principal);
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View(bug);
+                return View(principal);
             }
         }
     }
